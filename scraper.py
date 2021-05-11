@@ -24,6 +24,6 @@ def get_data(url):
 
 content = get_data(url)
 if content is None:
-    print('ERROR!')
+    print('ERROR! Failed to get data for url:', url)
 else:
     print('Price: {}'.format(content.price))
