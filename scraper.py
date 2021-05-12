@@ -1,8 +1,7 @@
-from urllib.request import urlopen
 from bs4 import BeautifulSoup
 import requests 
 
-url = 'https://finance.yahoo.com/quote/AAPL?p=AAPL&.tsrc=fin-srch'
+tickers = ['UBER', 'AMZN', 'TSLA', 'AAPL', 'FB']
 
 class Content:
     def __init__(self, url, price):
@@ -22,8 +21,10 @@ def get_data(url):
     price = bs.find("span", {"class":"Trsdu(0.3s) Fw(b) Fz(36px) Mb(-4px) D(ib)"}).text
     return Content(url, price)
 
-content = get_data(url)
-if content is None:
-    print('ERROR! Failed to get data for url:', url)
-else:
-    print('Price: {}'.format(content.price))
+for ticker in tickers:
+    url = 'https://finance.yahoo.com/quote/%s?p=%s&.tsrc=fin-srch' % (ticker, ticker)
+    content = get_data(url)
+    if content is None:
+        print('ERROR! Failed to get data for url:', url)
+    else:
+        print(ticker, 'price: {}'.format(content.price))
