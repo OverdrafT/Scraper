@@ -5,7 +5,7 @@ Service receives ticker's list as input and returns ticker's data scraped from f
 ## Prerequisites
 - Python 3.8.6
 - Requests lib
-- BeautifulSoap lib
+- BeautifulSoup lib
 ## Getting started
 - Clone repository
 - `python scraper.py`
